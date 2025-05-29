@@ -1,4 +1,4 @@
-async function kirimPesan() {
+async function sendMessage() {
     const masukan = document.getElementById("masukan_pengguna").value;  // Kolom input dari pengguna
     const kotak_obrolan = document.getElementById("kotak_obrolan");
 
