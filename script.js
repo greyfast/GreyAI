@@ -1,6 +1,6 @@
 async function sendMessage() {
-    const masukan = document.getElementById("masukan_pengguna").value;  // Kolom input dari pengguna
-    const kotak_obrolan = document.getElementById("kotak_obrolan");
+   // const masukan = document.getElementById("masukan_pengguna").value;  // Kolom input dari pengguna
+    const kotak_obrolan = document.getElementById("kotak_obrolan")
 
     // Menampilkan pesan pengguna
     if (masukan === "") return;  // Tidak kirim jika kolom kosong
