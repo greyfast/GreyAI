@@ -1,16 +1,5 @@
-
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/gpt.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/gpt",
-      "dest": "api/gpt.js"
-    }
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" }
   ]
 }
