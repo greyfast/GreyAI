@@ -1,20 +1,25 @@
-
-function sendMessage() {
+async function sendMessage() {
     const input = document.getElementById("user-input");
     const chatBox = document.getElementById("chat-box");
     const message = input.value.trim();
-    if (message !== "") {
-        const userMsg = document.createElement("div");
-        userMsg.className = "grey-msg";
-        userMsg.textContent = "🧠 Perintah King: " + message;
-        chatBox.appendChild(userMsg);
+    if (message === "") return;
 
-        const greyReply = document.createElement("div");
-        greyReply.className = "grey-msg";
-        greyReply.textContent = "🤖 Grey menerima dan sedang memproses...";
-        chatBox.appendChild(greyReply);
+    chatBox.innerHTML += `<div class="grey-msg">🧠 Perintah King: ${message}</div>`;
+    input.value = "";
 
+    chatBox.innerHTML += `<div class="grey-msg">🤖 Grey sedang memproses jawaban...</div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    try {
+        const res = await fetch("/api/gpt", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt: message })
+        });
+        const data = await res.json();
+        chatBox.innerHTML += `<div class="grey-msg">💬 ${data.reply}</div>`;
         chatBox.scrollTop = chatBox.scrollHeight;
-        input.value = "";
+    } catch (err) {
+        chatBox.innerHTML += `<div class="grey-msg">⚠️ Gagal mendapatkan jawaban Grey.</div>`;
     }
 }
