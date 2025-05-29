@@ -15,7 +15,7 @@ async function sendMessage() {
         const res = await fetch("https://api.openai.com/v1/completions", {
             method: "POST",
             headers: {
-                "Authorization": 'bearer sk-...8R8A,  // Ganti dengan API Key OpenAI kamu
+                "Authorization": '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',  // Ganti dengan API Key OpenAI kamu
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
